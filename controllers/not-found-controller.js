@@ -1,4 +1,4 @@
-var connection = require('../db');
+var connection = require('../db.config');
 
 module.exports.show = function(req, res, next) {
     var response = [];

@@ -1,8 +1,8 @@
-var connection = require('../db');
+var connection = require('../db.config');
 
 module.exports = {
     all: function(req, res, next) {
-        connection.query('SELECT * from nd_products', function(err, rows, fields) {
+        connection.query('SELECT * from authors', function(err, rows, fields) {
             if (!err){
                 var response = [];
                 response.push({'result' : 'success', 'data' : rows});
@@ -17,14 +17,12 @@ module.exports = {
     create: function(req, res, next) {
         var response = [];
         if (
-            typeof req.body.name !== 'undefined' &&
-            typeof req.body.price !== 'undefined'
+            typeof req.body.name !== 'undefined'
         ) {
             var name = req.body.name;
-            var price = req.body.price;
 
-            connection.query('INSERT INTO nd_products (name, price) VALUES (?, ?)',
-                [name, price],
+            connection.query('INSERT INTO authors (name) VALUES (?)',
+                [name],
                 function(err, result) {
                     if (!err){
 
@@ -50,7 +48,7 @@ module.exports = {
 
     get: function (req,res) {
         var id = req.params.id;
-        connection.query('SELECT * from nd_products where id = ?', [id], function (err, rows, fields) {
+        connection.query('SELECT * from authors where id = ?', [id], function (err, rows, fields) {
             if (!err) {
                 var response = [];
                 if (rows.length != 0) {
@@ -71,14 +69,12 @@ module.exports = {
         var id = req.params.id, response = [];
 
         if (
-            typeof req.body.name !== 'undefined' &&
-            typeof req.body.price !== 'undefined'
+            typeof req.body.name !== 'undefined'
         ) {
             var name = req.body.name;
-            var price = req.body.price;
 
-            connection.query('UPDATE nd_products SET product_name = ?, product_price = ? WHERE id = ?',
-                [name, price, id],
+            connection.query('UPDATE authors SET name = ? WHERE id = ?',
+                [name, id],
                 function(err, result) {
                     if (!err){
 
@@ -104,7 +100,7 @@ module.exports = {
     destroy: function (req,res) {
         var id = req.params.id;
 
-        connection.query('DELETE FROM nd_products WHERE id = ?', [id], function(err, result) {
+        connection.query('DELETE FROM authors WHERE id = ?', [id], function(err, result) {
             if (!err){
                 var response = [];
 
