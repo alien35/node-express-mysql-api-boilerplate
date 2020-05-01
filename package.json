@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "migrate": "knex migrate:latest"
+    "migrate": "knex migrate:latest",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "body-parser": "~1.15.2",
@@ -15,6 +17,8 @@
     "knex": "^0.13.0",
     "morgan": "~1.7.0",
     "mysql": "^2.15.0",
-    "serve-favicon": "~2.3.0"
-  }
+    "serve-favicon": "~2.3.0",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
