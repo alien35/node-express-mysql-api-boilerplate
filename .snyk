@@ -1,0 +1,20 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.25.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:debug:20170905':
+    - knex > debug:
+        patched: '2022-10-05T22:00:54.469Z'
+  'npm:extend:20180424':
+    - knex > liftoff > extend:
+        patched: '2022-10-05T22:00:54.469Z'
+  SNYK-JS-LODASH-567746:
+    - knex > lodash:
+        patched: '2022-10-05T22:00:54.469Z'
+  'npm:ms:20170412':
+    - knex > debug > ms:
+        patched: '2022-10-05T22:00:54.469Z'
+  'npm:uglify-js:20151024':
+    - jade > transformers > uglify-js:
+        patched: '2022-10-05T22:00:54.469Z'
